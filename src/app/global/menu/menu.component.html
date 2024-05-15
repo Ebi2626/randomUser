@@ -1,0 +1,9 @@
+<nav class="d-block p-2">
+    <ul class="nav justify-content-center">
+        @for(route of routes; track route.path) {
+        <li class="nav-link" routerLinkActive="fw-bold">
+            <a class="text-decoration-none p-2" [routerLink]="route.path">{{ route.path | titlecase}}</a>
+        </li>
+        }
+    </ul>
+</nav>

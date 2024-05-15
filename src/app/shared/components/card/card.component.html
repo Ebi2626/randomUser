@@ -1,0 +1,19 @@
+@if(!isPlaceholder()){
+<section class="d-flex flex-column align-items-center justify-content-center gap-4 mt-5">
+    <img appStopFetching class="img-fluid rounded" fetchpriority="high" loading="eager" [src]="person()?.imgSrc" [alt]="userAlt" width="128" height="128" />
+    <div appStopFetching class="d-flex flex-column gap-2">
+        <p class="text-secondary text-center m-0">Hi, My name is</p>
+        <h2 class="text-center m-0">{{person()?.firstName}} {{person()?.lastName}}</h2>
+    </div>
+    <button class="btn btn-primary px-4" (click)="emitClickEvent()">New</button>
+</section>
+} @else {
+    <section class="d-flex flex-column align-items-center justify-content-center gap-4 mt-5">
+        <div class="d-block rounded bg-light" style="width: 128px; height: 128px;"></div>
+        <div class="d-flex flex-column gap-2" style="width: 162px;">
+            <p class="text-light d-block text-center m-0 bg-light w-100" style="height: 1rem;"></p>
+            <h2 class="text-center m-0 bg-light d-block w-100" style="height: 2.5rem;"></h2>
+        </div>
+        <button class="btn btn-primary px-4" disabled>New</button>
+    </section>
+}

@@ -1,0 +1,7 @@
+@defer (when person()?.length) {
+    @if(person()?.length) {
+        <app-card [person]="person()![0]" (onClickEvent)="fetchNewData()" />
+    }
+} @placeholder (minimum 300ms) {
+    <app-card [isPlaceholder]="true" />
+}
