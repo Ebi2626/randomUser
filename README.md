@@ -1,6 +1,6 @@
 # RandomUser
 
-Application prepared as recruitment task for [dataedo](https://dataedo.pl).
+Application prepared as recruitment task for [dataedo](https://dataedo.pl). Live preview on [netlify](https://master--dataedo-randomuser.netlify.app/).
 
 The randomUser app contains two views:
 - People - it displays random people from [randomuser.me](https://randomuser.me) API along with their first names, last names, and photos. Every 5 seconds, the application automatically retrieves information about another random person, unless the user hovers over the first name, last name, user photo, or the 'New' button. 
