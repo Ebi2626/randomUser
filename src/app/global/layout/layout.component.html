@@ -1,8 +1,8 @@
 @defer(prefetch on immediate) {
     <app-menu></app-menu>
 }
-@defer(on idle) {
-    <main class="d-flex flex-column align-items-center p-4 flex-grow-1">
+@defer() {
+    <main class="d-flex flex-column align-items-center p-4 flex-fill">
         <ng-content></ng-content>
     </main>
 }

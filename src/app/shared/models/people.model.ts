@@ -4,7 +4,6 @@ export interface Person {
     imgSrc: string;
 }
 
-
 interface PersonName {
     title: string;
     first: string;

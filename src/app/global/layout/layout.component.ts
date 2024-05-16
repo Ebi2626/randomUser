@@ -10,5 +10,4 @@ import { MenuComponent } from "../menu/menu.component";
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LayoutComponent {
-
 }

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Inject, OnInit, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CardComponent } from '../../../shared/components/card/card.component';
 import { PeopleService } from '../../services/people.service';
 import { toSignal } from '@angular/core/rxjs-interop';
