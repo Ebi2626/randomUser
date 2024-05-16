@@ -22,7 +22,6 @@ export class PeopleComponent  {
   }
 
   ngOnInit(): void {
-    console.log('onInit');
     this.fetchNewData();
     this.peopleService.startFetchingInterval();
   }

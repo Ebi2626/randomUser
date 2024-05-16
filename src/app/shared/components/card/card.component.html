@@ -5,7 +5,7 @@
         <p class="text-secondary text-center m-0">Hi, My name is</p>
         <h2 class="text-center m-0">{{person()?.firstName}} {{person()?.lastName}}</h2>
     </div>
-    <button class="btn btn-primary px-4" (click)="emitClickEvent()">New</button>
+    <button appStopFetching class="btn btn-primary px-4" (click)="emitClickEvent()">New</button>
 </section>
 } @else {
     <section class="d-flex flex-column align-items-center justify-content-center gap-4 mt-5">
