@@ -13,16 +13,17 @@ import { toSignal } from '@angular/core/rxjs-interop';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PeopleComponent  {
-  ngOnInit(): void {
-    this.fetchNewData();
-    this.peopleService.startFetchingInterval();
-  }
   private peopleService: PeopleService = inject(PeopleService);
 
   public person = toSignal(this.peopleService.person$);
 
   public fetchNewData() {
     this.peopleService.getNewPersonAndResetTimer();
+  }
+
+  ngOnInit(): void {
+    this.fetchNewData();
+    this.peopleService.startFetchingInterval();
   }
 }
 

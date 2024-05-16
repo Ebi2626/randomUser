@@ -11,7 +11,7 @@ import { StopFetchingDirective } from '../../../people/directives/stop-fetching.
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CardComponent {
-  private _altText = 'Picture of ';
+  private _altText = 'Picture of';
   public person = input<Person>();
   public userAlt = computed(() => this.person() ? `${this._altText} ${this.person()!.firstName} ${this.person()!.lastName}` : '')
   public isPlaceholder = input<boolean>(false); 

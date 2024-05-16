@@ -1,4 +1,4 @@
-import { Injectable, OnDestroy, inject } from '@angular/core';
+import { Injectable, OnDestroy, OnInit, inject } from '@angular/core';
 import { Person, PersonResponse } from '../../shared/models/people.model';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
@@ -12,9 +12,10 @@ interface Cancellable {
   providedIn: 'root'
 })
 export class PeopleService implements OnDestroy {
+  private randomUserApiUrl = `${environment.RANDOM_USER_API}?inc=name,picture`;
   private http: HttpClient = inject(HttpClient);
   private restOfIntervalTime: number | null = null;
-  private currentInterval?: Cancellable;
+  private currentInterval: Cancellable | null = null;
   private fetchPerson$: Subject<void> = new Subject();
   private sub: Subscription = new Subscription();
   public person$: Subject<Person[]> = new Subject();
@@ -22,10 +23,8 @@ export class PeopleService implements OnDestroy {
   constructor() {
     this.sub.add(
       this.fetchPerson$.pipe(
-        debounceTime(300),
         exhaustMap(() => {
-          const apiUrl = `${environment.RANDOM_USER_API}/?inc=name,picture`;
-          return this.http.get<PersonResponse>(apiUrl).pipe(
+          return this.http.get<PersonResponse>(this.randomUserApiUrl).pipe(
             map<PersonResponse, void>((personResponse: PersonResponse) => {
               const newPerson: Person = {
                 firstName: personResponse.results[0].name.first,
@@ -63,6 +62,7 @@ export class PeopleService implements OnDestroy {
         const stopTime = Date.now();
         this.restOfIntervalTime = startTime + interval - stopTime;
         clearTimeout(timeoutId);
+        this.currentInterval = null;
       }
     }
   }
@@ -87,6 +87,7 @@ export class PeopleService implements OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.stopFetchingInterval();
     this.sub.unsubscribe();
   }
 }
